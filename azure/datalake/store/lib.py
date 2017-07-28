@@ -411,7 +411,9 @@ class DatalakeRESTInterface:
 
     def __getstate__(self):
         state = self.__dict__.copy()
-        state.pop('local', None)
+        del state['local']
+        logger.debug("Serialize with state: %s", state)
+        #state.pop('local', None)
         return state
 
 """
